@@ -5,4 +5,5 @@ require "rspec/rails"
 RSpec.configure do |config|
   config.fixture_paths = []
   config.use_transactional_fixtures = true
+  config.include FactoryBot::Syntax::Methods
 end
