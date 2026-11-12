@@ -2,7 +2,7 @@ module Billing
   class GenerateInvoice
     def initialize(subscription:, period_start: nil)
       @subscription = subscription
-      @period_start = period_start || subscription.next_billing_on
+      @period_start = period_start || Date.current
     end
 
     def call

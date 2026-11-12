@@ -13,12 +13,24 @@ services:
     command: bash -lc "bin/rails db:prepare && bin/rails server -b 0.0.0.0"
     ports: ["3000:3000"]
     volumes: [.:/rails]
-    environment: { RAILS_ENV: development, POSTGRES_HOST: db, POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, REDIS_URL: redis://redis:6379/0, WEBHOOK_SECRET: ${WEBHOOK_SECRET:-development-webhook-secret} }
+    environment:
+      RAILS_ENV: development
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      REDIS_URL: redis://redis:6379/0
+      WEBHOOK_SECRET: "${WEBHOOK_SECRET:-development-webhook-secret}"
     depends_on: { db: { condition: service_healthy }, redis: { condition: service_healthy } }
   worker:
     build: .
-    command: bash -lc "bin/rails db:prepare && bundle exec sidekiq -C config/sidekiq.yml"
+    command: bundle exec sidekiq -C config/sidekiq.yml
     volumes: [.:/rails]
-    environment: { RAILS_ENV: development, POSTGRES_HOST: db, POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, REDIS_URL: redis://redis:6379/0, WEBHOOK_SECRET: ${WEBHOOK_SECRET:-development-webhook-secret} }
+    environment:
+      RAILS_ENV: development
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      REDIS_URL: redis://redis:6379/0
+      WEBHOOK_SECRET: "${WEBHOOK_SECRET:-development-webhook-secret}"
     depends_on: { db: { condition: service_healthy }, redis: { condition: service_healthy } }
 volumes: { postgres_data: {}, redis_data: {} }

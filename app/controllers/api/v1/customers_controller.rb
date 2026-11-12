@@ -1,6 +1,6 @@
 class Api::V1::CustomersController < Api::V1::BaseController
   def index
-    records = api_account.customers.order(:id).limit([params.fetch(:per_page, 25).to_i, 100].min)
+    records = api_account.customers.order(:id).limit([ params.fetch(:per_page, 25).to_i, 100 ].min)
     render json: { data: records.map { |r| customer_json(r) } }
   end
   def show = render json: { data: customer_json(api_account.customers.find(params[:id])) }
