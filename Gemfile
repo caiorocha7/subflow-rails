@@ -19,7 +19,7 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "bcrypt", "~> 3.1"
-gem "sidekiq", "~> 7.3"
+gem "sidekiq", "~> 8.0"
 gem "sidekiq-cron", "~> 2.1"
 gem "connection_pool", "< 3.0"
 
