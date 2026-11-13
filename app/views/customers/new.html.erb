@@ -1,1 +1,1 @@
-<div class="page-head"><div><p class="eyebrow">BASE DE CLIENTES</p><h1>Novo cliente</h1></div></div><section class="panel"><%= render "form", customer: @customer %></section>
+<%= render "layouts/page_header", eyebrow: "BASE DE CLIENTES", title: "Novo cliente", description: "Adicione um cliente à sua base." %><section class="panel form-card"><%= render "form", customer: @customer %></section>
