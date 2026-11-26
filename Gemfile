@@ -21,7 +21,7 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1"
 gem "sidekiq", "~> 7.3"
 gem "sidekiq-cron", "~> 2.1"
-gem "connection_pool", "< 3.0"
+gem "connection_pool", "< 4.0"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
